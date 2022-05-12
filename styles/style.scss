@@ -1,0 +1,14 @@
+@use "variables" as *;
+@use "functions" as *;
+
+@include setup;
+
+//original code
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  z-index: -1;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
