@@ -22,16 +22,54 @@
     <title>Frontend Mentor | Intro section with dropdown navigation</title>
   </head>
   <body>
-    Features Company Careers About Login Register Make remote work Get your team
-    in sync, no matter your location. Streamline processes, create team rituals,
-    and watch productivity soar. Learn more
-
-    <div class="attribution">
+    <header>
+      <img src="images/logo.svg" alt="snap logo" class="logo" />
+      <img
+        src="images/icon-menu.svg"
+        alt="open navigation"
+        class="navigation__toggle"
+      />
+    </header>
+    <nav hidden>Features Company Careers About Login Register</nav>
+    <main>
+      <img src="images/image-hero-mobile.png" alt="" class="hero-img" />
+      <div class="content">
+        <h1 class="content__header">Make remote work</h1>
+        <p class="content__paragraph">
+          Get your team in sync, no matter your location. Streamline processes,
+          create team rituals, and watch productivity soar.
+        </p>
+        <button class="content__cta-button">Learn more</button>
+      </div>
+      <div class="clients">
+        <img
+          src="images/client-databiz.svg"
+          alt="Databiz logo"
+          class="clients__databiz-logo"
+        />
+        <img
+          src="images/client-audiophile.svg"
+          alt="Audiophile logo"
+          class="clients__audiphile-logo"
+        />
+        <img
+          src="images/client-meet.svg"
+          alt="Meet logo"
+          class="clients__meet-logo"
+        />
+        <img
+          src="images/client-maker.svg"
+          alt="Maker logo"
+          class="clients__maker-logo"
+        />
+      </div>
+    </main>
+    <footer class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
         >Frontend Mentor</a
       >. Coded by
       <a href="https://github.com/mihalymarcell86">Marcell Mihály</a>.
-    </div>
+    </footer>
   </body>
 </html>

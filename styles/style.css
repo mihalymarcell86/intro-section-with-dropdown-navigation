@@ -10,7 +10,100 @@
   padding: 0;
 }
 
+body {
+  background-color: hsl(0deg, 0%, 100%);
+  font-family: "Epilogue", sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+.logo {
+  margin: 16px;
+  margin-bottom: 24px;
+  width: 4.8333333333rem;
+}
+
+.navigation__toggle {
+  display: block;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 1.7777777778rem;
+}
+
+main {
+  background-color: hsl(0deg, 0%, 100%);
+}
+
+.hero-img {
+  margin-bottom: 2.6527777778rem;
+}
+
+.content {
+  margin-inline: 15px;
+  margin-bottom: 2.6666666667rem;
+  text-align: center;
+}
+
+.content__header {
+  font-size: 2rem;
+  line-height: 1.1666666667;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.4444444444em;
+}
+
+.content__paragraph {
+  font-size: 0.8888888889rem;
+  line-height: 1.625;
+  font-weight: 500;
+  color: hsl(0deg, 0%, 41%);
+  margin-bottom: 1.5em;
+}
+
+.content__cta-button {
+  border: 0;
+  font-size: 0.8888888889rem;
+  line-height: 1.625;
+  font-weight: 700;
+  letter-spacing: -0.22px;
+  padding: 0.75em 1.5em;
+  color: hsl(0deg, 0%, 98%);
+  background-color: hsl(0deg, 0%, 8%);
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.clients {
+  margin-inline: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.clients__databiz-logo {
+  width: 81.25px;
+}
+
+.clients__audiphile-logo {
+  width: 52.87px;
+}
+
+.clients__meet-logo {
+  width: 64.14px;
+}
+
+.clients__maker-logo {
+  width: 58.9px;
+}
+
 .attribution {
+  position: absolute;
+  bottom: 1em;
+  width: 100%;
   font-size: 11px;
   text-align: center;
   z-index: -1;

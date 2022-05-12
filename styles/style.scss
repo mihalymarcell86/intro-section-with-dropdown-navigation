@@ -3,8 +3,97 @@
 
 @include setup;
 
+body {
+  background-color: hsl(0, 0%, 100%);
+  font-family: $font-epilogue;
+}
+
+img {
+  max-width: 100%;
+}
+
+.logo {
+  margin: 16px;
+  margin-bottom: 24px;
+  width: rem(87px);
+}
+
+.navigation__toggle {
+  //TODO: fix vertical alignment
+  display: block;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: rem(32px);
+}
+
+main {
+  background-color: hsl(0, 0%, 100%);
+  //to hide footer behind content case of scrolling
+}
+
+.hero-img {
+  margin-bottom: rem(47.75px);
+}
+
+.content {
+  margin-inline: 15px;
+  margin-bottom: rem(48px);
+  text-align: center;
+}
+
+.content__header {
+  @include setFont(rem(36px), 42, 700);
+  letter-spacing: -0.5px;
+  margin-bottom: em(16px, 36px);
+}
+
+.content__paragraph {
+  @include setFont(rem(16px), 26, 500);
+  color: color(medium-gray);
+  margin-bottom: em(24px, 16px);
+}
+
+.content__cta-button {
+  border: 0;
+  @include setFont(rem(16px), 26, 700);
+  letter-spacing: -0.22px;
+  padding: em(12px, 16px) em(24px, 16px);
+  color: color(almost-white);
+  background-color: color(almost-black);
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.clients {
+  margin-inline: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.clients__databiz-logo {
+  width: 81.25px;
+}
+
+.clients__audiphile-logo {
+  width: 52.87px;
+}
+
+.clients__meet-logo {
+  width: 64.14px;
+}
+
+.clients__maker-logo {
+  width: 58.9px;
+}
+
 //original code
 .attribution {
+  position: absolute;
+  bottom: 1em;
+  width: 100%;
   font-size: 11px;
   text-align: center;
   z-index: -1;
