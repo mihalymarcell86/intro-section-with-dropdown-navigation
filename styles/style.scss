@@ -1,10 +1,11 @@
 @use "variables" as *;
 @use "functions" as *;
+@use "lerp" as *;
 
 @include setup;
 
 body {
-  background-color: hsl(0, 0%, 100%);
+  background-color: color(almost-white);
   font-family: $font-epilogue;
 }
 
@@ -16,77 +17,189 @@ img {
   margin: 16px;
   margin-bottom: 24px;
   width: rem(87px);
+  @media (min-width: $breakpoint) {
+    margin: 29px 40px fluidClamp($breakpoint, 24px, $bp-desktop, 71px);
+  }
 }
 
 .navigation__toggle {
-  //TODO: fix vertical alignment
   display: block;
   position: absolute;
-  top: 16px;
+  top: 18.5px;
   right: 16px;
   width: rem(32px);
+  @media (min-width: $breakpoint) {
+    display: none;
+  }
+}
+
+.navigation__menu {
+  display: none;
+  @media (min-width: $breakpoint) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+    position: absolute;
+    top: 21px;
+    right: 40px;
+    left: 187px;
+    @include setFont(rem(14px), 16, 500);
+    color: color(medium-gray);
+  }
+}
+
+.menu__item {
+  cursor: pointer;
+  margin-left: fluidClamp($breakpoint, 20px, $bp-desktop, 40px);
+  &:first-child {
+    margin-left: 0;
+  }
+  &:hover {
+    color: color(almost-black);
+  }
+}
+
+.menu__arrow {
+  margin-left: rem(8px);
+  margin-bottom: 1px;
+  stroke: currentColor;
+}
+
+.item--right-margin {
+  margin-right: fluidClamp($breakpoint, 20px, $bp-desktop, 40px);
+}
+
+.item--login {
+  margin-left: auto;
+}
+
+.item--button {
+  @include setFont(rem(14px), 16, 500);
+  border: 1.5px solid color(medium-gray);
+  border-radius: 14px;
+  padding: em(11.5px, 14px) em(22px, 14px);
+  cursor: pointer;
+  &:hover {
+    border-color: color(almost-black);
+  }
 }
 
 main {
-  background-color: hsl(0, 0%, 100%);
+  background-color: color(almost-white);
   //to hide footer behind content case of scrolling
+  display: flex;
+  flex-direction: column;
+  @media (min-width: $breakpoint) {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin-left: fluidClamp($breakpoint, 50px, $bp-desktop, 165px);
+    margin-right: fluidClamp($breakpoint, 50px, $bp-desktop, 130px);
+  }
+}
+
+.image-wrapper {
+  @media (min-width: $breakpoint) {
+    width: 480px;
+  }
+  font-size: 0;
 }
 
 .hero-img {
   margin-bottom: rem(47.75px);
+  @media (min-width: $breakpoint) {
+    margin: 0;
+  }
 }
 
 .content {
-  margin-inline: 15px;
-  margin-bottom: rem(48px);
+  margin-inline: 16px;
   text-align: center;
+  @media (min-width: $breakpoint) {
+    align-self: flex-end;
+    flex-shrink: 2;
+    margin-left: 0;
+    margin-right: fluidClamp($breakpoint, 2rem, $bp-desktop, rem(40px));
+    max-width: 540px;
+    text-align: left;
+  }
 }
 
-.content__header {
+.content__heading {
   @include setFont(rem(36px), 42, 700);
   letter-spacing: -0.5px;
   margin-bottom: em(16px, 36px);
+  @media (min-width: $breakpoint) {
+    font-size: fluidClamp($breakpoint, rem(36px), $bp-desktop, rem(80px));
+    line-height: fluidClamp($breakpoint, 42px, $bp-desktop, 80px);
+    letter-spacing: fluidClamp($breakpoint, -0.5px, $bp-desktop, -1.11px);
+    margin-bottom: fluidClamp($breakpoint, rem(16px), $bp-desktop, rem(48px));
+  }
 }
 
 .content__paragraph {
   @include setFont(rem(16px), 26, 500);
   color: color(medium-gray);
+  max-width: 500px;
+  margin-inline: auto;
   margin-bottom: em(24px, 16px);
+  @media (min-width: $breakpoint) {
+    max-width: none;
+    @include setFont(rem(18px), 28);
+    margin-bottom: em(51px, 18px);
+    margin-right: fluidClamp($breakpoint, 0px, $bp-desktop, 95px);
+  }
 }
 
 .content__cta-button {
   border: 0;
   @include setFont(rem(16px), 26, 700);
   letter-spacing: -0.22px;
-  padding: em(12px, 16px) em(24px, 16px);
+  padding: em(10px, 16px) em(22px, 16px);
   color: color(almost-white);
   background-color: color(almost-black);
+  border: 1px solid color(almost-black);
   border-radius: 15px;
   cursor: pointer;
+  margin-bottom: rem(48px);
+  width: max-content;
+  @media (min-width: $breakpoint) {
+    @include setFont(rem(18px), 28, 700);
+    letter-spacing: -0.25px;
+    padding: em(13px, 18px) em(30px, 18px);
+    margin-bottom: rem(108px);
+  }
+  &:hover {
+    background-color: color(almost-white);
+    color: color(almost-black);
+  }
 }
 
-.clients {
-  margin-inline: 16px;
+.content__clients {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  @media (min-width: $breakpoint) {
+    margin-bottom: 9px;
+    margin-right: fluidClamp($breakpoint, 0px, $bp-desktop, 62px);
+  }
 }
 
 .clients__databiz-logo {
-  width: 81.25px;
+  width: fluidClamp($breakpoint, rem(81.25px), $bp-desktop, rem(113.14px));
 }
 
 .clients__audiphile-logo {
-  width: 52.87px;
+  width: fluidClamp($breakpoint, rem(52.87px), $bp-desktop, rem(73px));
 }
 
 .clients__meet-logo {
-  width: 64.14px;
+  width: fluidClamp($breakpoint, rem(64.14px), $bp-desktop, rem(89.31px));
 }
 
 .clients__maker-logo {
-  width: 58.9px;
+  width: fluidClamp($breakpoint, rem(58.9px), $bp-desktop, rem(82.01px));
 }
 
 //original code

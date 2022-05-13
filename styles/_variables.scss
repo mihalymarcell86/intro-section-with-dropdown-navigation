@@ -1,7 +1,8 @@
 @use "sass:math";
 
 $REM: 18;
-$breakpoint: undefined;
+$breakpoint: 750px;
+$bp-desktop: 1440px;
 
 $colors: (
   almost-white: hsl(0, 0%, 98%),
