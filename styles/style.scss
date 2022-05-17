@@ -4,9 +4,12 @@
 
 @include setup;
 
+//TODO: test for REM change
+
 body {
   background-color: color(almost-white);
   font-family: $font-epilogue;
+  overflow: scroll;
 }
 
 img {
@@ -14,72 +17,142 @@ img {
 }
 
 .logo {
-  margin: 16px;
-  margin-bottom: 24px;
+  margin: 24px 16px 24px;
   width: rem(87px);
   @media (min-width: $breakpoint) {
     margin: 29px 40px fluidClamp($breakpoint, 24px, $bp-desktop, 71px);
   }
 }
 
+.navigation__backdrop {
+  opacity: 0;
+}
+
 .navigation__toggle {
   display: block;
+  z-index: 1;
+  cursor: pointer;
+  @media (min-width: $breakpoint) {
+    display: none;
+  }
+}
+
+.toggle--open {
+  background-image: url(../images/icon-menu.svg);
+  width: 32px;
+  height: 18px;
   position: absolute;
-  top: 18.5px;
   right: 16px;
-  width: rem(32px);
+  top: 25px;
+}
+
+.toggle--close {
+  background-image: url(../images/icon-close-menu.svg);
+  width: 24px;
+  height: 24px;
+  position: fixed;
+  top: 22px;
+  right: 20px;
+}
+
+.navigation__backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: color(almost-black);
+  opacity: 0.75;
   @media (min-width: $breakpoint) {
     display: none;
   }
 }
 
 .navigation__menu {
-  display: none;
+  list-style-type: none;
+  color: color(medium-gray);
+  position: absolute;
+  list-style-type: none;
+  color: color(medium-gray);
+  @include setFont(rem(16px), 26, 500);
+  padding-top: 78px;
+  padding-left: 24px;
+  padding-right: 21px;
+  position: fixed;
+  display: block;
+  width: 240px;
+  height: 100vh;
+  background-color: color(almost-white);
+  right: -240px;
+  top: 0;
+  transition: right 0.2s linear;
   @media (min-width: $breakpoint) {
+    width: auto;
+    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    list-style-type: none;
     position: absolute;
+    padding: 0;
     top: 21px;
     right: 40px;
     left: 187px;
     @include setFont(rem(14px), 16, 500);
-    color: color(medium-gray);
   }
+}
+
+.menu--open {
+  right: 0;
 }
 
 .menu__item {
   cursor: pointer;
-  margin-left: fluidClamp($breakpoint, 20px, $bp-desktop, 40px);
-  &:first-child {
-    margin-left: 0;
+  transition: all 0.1s ease-in;
+  margin-bottom: rem(16px);
+  @media (min-width: $breakpoint) {
+    margin-left: fluidClamp($breakpoint, 25px, $bp-desktop, 40px);
+    margin-bottom: 0;
+    &:first-child {
+      margin-left: 0;
+    }
   }
   &:hover {
     color: color(almost-black);
   }
 }
 
+//TODO prevent line-break
 .menu__arrow {
-  margin-left: rem(8px);
+  margin-left: rem(16px);
   margin-bottom: 1px;
   stroke: currentColor;
+  @media (min-width: $breakpoint) {
+    margin-left: rem(8px);
+  }
 }
 
-.item--right-margin {
-  margin-right: fluidClamp($breakpoint, 20px, $bp-desktop, 40px);
+.item--about {
+  margin-bottom: rem(32px);
+  @media (min-width: $breakpoint) {
+    margin-right: fluidClamp($breakpoint, 25px, $bp-desktop, 40px);
+    margin-bottom: 0;
+  }
 }
 
 .item--login {
+  @include setFont(rem(14px), 16, 500);
+  text-align: center;
   margin-left: auto;
 }
 
 .item--button {
   @include setFont(rem(14px), 16, 500);
+  text-align: center;
   border: 1.5px solid color(medium-gray);
   border-radius: 14px;
   padding: em(11.5px, 14px) em(22px, 14px);
   cursor: pointer;
+  transition: all 0.1s ease-in;
   &:hover {
     border-color: color(almost-black);
   }
@@ -104,7 +177,6 @@ main {
   }
   font-size: 0;
 }
-
 .hero-img {
   margin-bottom: rem(47.75px);
   @media (min-width: $breakpoint) {
@@ -163,6 +235,7 @@ main {
   cursor: pointer;
   margin-bottom: rem(48px);
   width: max-content;
+  transition: all 0.1s ease-in;
   @media (min-width: $breakpoint) {
     @include setFont(rem(18px), 28, 700);
     letter-spacing: -0.25px;
@@ -180,8 +253,11 @@ main {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  max-width: 500px;
+  margin-inline: auto;
   @media (min-width: $breakpoint) {
     margin-bottom: 9px;
+    margin-left: 0;
     margin-right: fluidClamp($breakpoint, 0px, $bp-desktop, 62px);
   }
 }
@@ -202,7 +278,7 @@ main {
   width: fluidClamp($breakpoint, rem(58.9px), $bp-desktop, rem(82.01px));
 }
 
-//original code
+//attribution
 .attribution {
   position: absolute;
   bottom: 1em;

@@ -18,6 +18,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/style.css" />
+    <script src="./scripts/script.js" defer></script>
 
     <title>Frontend Mentor | Intro section with dropdown navigation</title>
   </head>
@@ -26,11 +27,8 @@
       <img src="images/logo.svg" alt="snap logo" class="logo" />
     </header>
     <nav>
-      <img
-        src="images/icon-menu.svg"
-        alt="open navigation"
-        class="navigation__toggle"
-      />
+      <div class="navigation__toggle toggle--open"></div>
+      <div class="navigation__backdrop" hidden></div>
       <ul class="navigation__menu">
         <li class="menu__item">
           Features<svg
@@ -53,7 +51,7 @@
           </svg>
         </li>
         <li class="menu__item">Careers</li>
-        <li class="menu__item item--right-margin">About</li>
+        <li class="menu__item item--about">About</li>
         <li class="menu__item item--login">Login</li>
         <li class="menu__item item--button">Register</li>
       </ul>
