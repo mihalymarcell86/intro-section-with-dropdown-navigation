@@ -79,28 +79,25 @@ img {
 }
 
 .navigation__menu {
-  list-style-type: none;
   color: hsl(0deg, 0%, 41%);
   position: absolute;
-  list-style-type: none;
-  color: hsl(0deg, 0%, 41%);
   font-size: 0.8888888889rem;
   line-height: 1.625;
   font-weight: 500;
   padding-top: 78px;
   padding-left: 24px;
   padding-right: 21px;
-  position: fixed;
   display: block;
   width: 240px;
   height: 100vh;
-  background-color: hsl(0deg, 0%, 98%);
+  background-color: white;
   right: -240px;
   top: 0;
   transition: right 0.2s linear;
 }
 @media (min-width: 750px) {
   .navigation__menu {
+    background-color: hsl(0deg, 0%, 98%);
     width: auto;
     height: auto;
     display: flex;
@@ -124,6 +121,7 @@ img {
 .menu__item {
   cursor: pointer;
   transition: all 0.1s ease-in;
+  list-style-type: none;
   margin-bottom: 0.8888888889rem;
 }
 @media (min-width: 750px) {
@@ -131,23 +129,54 @@ img {
     margin-left: clamp(25px, 0.0217391304 * 100vw + 8.6956521739px, 40px);
     margin-bottom: 0;
   }
-  .menu__item:first-child {
-    margin-left: 0;
-  }
 }
 .menu__item:hover {
   color: hsl(0deg, 0%, 8%);
 }
 
-.menu__arrow {
+@media (min-width: 750px) {
+  .item--features {
+    margin-left: 0;
+  }
+}
+
+.menu__arrow--up {
   margin-left: 0.8888888889rem;
   margin-bottom: 1px;
   stroke: currentColor;
 }
 @media (min-width: 750px) {
-  .menu__arrow {
+  .menu__arrow--up {
     margin-left: 0.4444444444rem;
   }
+}
+
+.menu__arrow--down {
+  display: none;
+  margin-left: 0.7222222222rem;
+  margin-bottom: 1px;
+  stroke: currentColor;
+}
+@media (min-width: 750px) {
+  .menu__arrow--down {
+    margin-left: 0.25rem;
+  }
+}
+
+.checkbox--features:checked ~ label .item--features .menu__arrow--up {
+  display: none;
+}
+
+.checkbox--features:checked ~ label .item--features .menu__arrow--down {
+  display: inline-block;
+}
+
+.checkbox--company:checked ~ label .item--company .menu__arrow--up {
+  display: none;
+}
+
+.checkbox--company:checked ~ label .item--company .menu__arrow--down {
+  display: inline-block;
 }
 
 .item--about {
@@ -181,6 +210,72 @@ img {
 }
 .item--button:hover {
   border-color: hsl(0deg, 0%, 8%);
+}
+
+[type=checkbox] {
+  display: none;
+}
+
+[type=checkbox] ~ .menu__submenu {
+  display: none;
+}
+
+.checkbox--company:checked ~ .submenu--company, .checkbox--features:checked ~ .submenu--features {
+  display: block;
+  margin-top: 24px;
+  margin-left: 23px;
+  margin-bottom: 24px;
+}
+@media (min-width: 750px) {
+  .checkbox--company:checked ~ .submenu--company, .checkbox--features:checked ~ .submenu--features {
+    position: absolute;
+    margin: 0;
+    padding: 24px;
+    background: #ffffff;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.149126);
+    border-radius: 10px;
+  }
+}
+
+@media (min-width: 750px) {
+  .checkbox--features:checked ~ .submenu--features {
+    top: 36px;
+    left: -74px;
+  }
+}
+
+.checkbox--company:checked ~ .submenu--company {
+  margin-top: 18px;
+}
+@media (min-width: 750px) {
+  .checkbox--company:checked ~ .submenu--company {
+    top: 36px;
+    left: 119px;
+    left: clamp(104px, 0.0217391304 * 100vw + 87.6956521739px, 119px);
+    margin: 0;
+  }
+}
+
+@media (min-width: 750px) {
+  .item--submenu {
+    margin-left: 0;
+    margin-bottom: 16px;
+  }
+  .item--submenu:last-child {
+    margin: 0;
+  }
+}
+
+.submenu-icons {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  align-items: center;
+  gap: 15px;
+}
+
+.submenu__icon {
+  height: 20px;
+  justify-self: center;
 }
 
 main {

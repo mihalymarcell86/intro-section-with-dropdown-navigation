@@ -30,26 +30,83 @@
       <div class="navigation__toggle toggle--open"></div>
       <div class="navigation__backdrop" hidden></div>
       <ul class="navigation__menu">
-        <li class="menu__item">
-          Features<svg
-            width="10"
-            height="6"
-            xmlns="http://www.w3.org/2000/svg"
-            class="menu__arrow"
-          >
-            <path stroke-width="1.5" fill="none" d="m1 1 4 4 4-4" />
-          </svg>
-        </li>
-        <li class="menu__item">
-          Company<svg
-            width="10"
-            height="6"
-            xmlns="http://www.w3.org/2000/svg"
-            class="menu__arrow"
-          >
-            <path stroke-width="1.5" fill="none" d="m1 1 4 4 4-4" />
-          </svg>
-        </li>
+        <input type="checkbox" class="checkbox--features" id="features" /><label
+          for="features"
+        >
+          <li class="menu__item item--features">
+            Features<svg
+              width="10"
+              height="6"
+              xmlns="http://www.w3.org/2000/svg"
+              class="menu__arrow--up"
+            >
+              <path stroke-width="1.5" fill="none" d="m1 1 4 4 4-4" />
+            </svg>
+            <svg
+              width="10"
+              height="6"
+              xmlns="http://www.w3.org/2000/svg"
+              class="menu__arrow--down"
+            >
+              <path stroke-width="1.5" fill="none" d="m1 5 4-4 4 4" />
+            </svg></li
+        ></label>
+        <ul class="menu__submenu submenu--features">
+          <li class="menu__item item--submenu submenu-icons">
+            <img
+              src="./images/icon-todo.svg"
+              alt=""
+              class="submenu__icon"
+            />Todo List
+          </li>
+          <li class="menu__item item--submenu submenu-icons">
+            <img
+              src="./images/icon-calendar.svg"
+              alt=""
+              class="submenu__icon"
+            />Calendar
+          </li>
+          <li class="menu__item item--submenu submenu-icons">
+            <img
+              src="./images/icon-reminders.svg"
+              alt=""
+              class="submenu__icon"
+            />Reminders
+          </li>
+          <li class="menu__item item--submenu submenu-icons">
+            <img
+              src="./images/icon-planning.svg"
+              alt=""
+              class="submenu__icon"
+            />Planning
+          </li>
+        </ul>
+        <input type="checkbox" class="checkbox--company" id="company" /><label
+          for="company"
+        >
+          <li class="menu__item item--company">
+            Company<svg
+              width="10"
+              height="6"
+              xmlns="http://www.w3.org/2000/svg"
+              class="menu__arrow--up"
+            >
+              <path stroke-width="1.5" fill="none" d="m1 1 4 4 4-4" />
+            </svg>
+            <svg
+              width="10"
+              height="6"
+              xmlns="http://www.w3.org/2000/svg"
+              class="menu__arrow--down"
+            >
+              <path stroke-width="1.5" fill="none" d="m1 5 4-4 4 4" />
+            </svg></li
+        ></label>
+        <ul class="menu__submenu submenu--company" hidden>
+          <li class="menu__item item--submenu">History</li>
+          <li class="menu__item item--submenu">Our Team</li>
+          <li class="menu__item item--submenu">Blog</li>
+        </ul>
         <li class="menu__item">Careers</li>
         <li class="menu__item item--about">About</li>
         <li class="menu__item item--login">Login</li>

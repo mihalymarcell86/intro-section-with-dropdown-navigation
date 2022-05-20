@@ -5,9 +5,10 @@ let menuIsOpen = false;
 
 function toggleButton() {
   menuIsOpen = !menuIsOpen;
-  if (button.classList.contains("toggle--open"))
+  if (button.classList.contains("toggle--open")) {
     button.classList.replace("toggle--open", "toggle--close");
-  else {
+    uncheckAll();
+  } else {
     button.classList.replace("toggle--close", "toggle--open");
   }
 }
@@ -22,10 +23,28 @@ button.addEventListener("click", () => {
   toggleMobileMenu();
 });
 
-//close mobile menu, if window is resized while menu is open
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+//in desktop view only one menu should be open at a time
+checkboxes.forEach((checkbox) => {
+  checkbox.addEventListener("change", (event) => {
+    if (event.target.checked && window.innerWidth >= 750)
+      checkboxes.forEach((checkbox) =>
+        checkbox.id != event.target.id ? (checkbox.checked = false) : null
+      );
+  });
+});
+
+function uncheckAll() {
+  checkboxes.forEach((checkbox) => (checkbox.checked = false));
+}
+
+//close mobile menu and collapse submenus, if window is resized while menu is open
 window.onresize = () => {
-  if (menuIsOpen && window.innerWidth >= 750) {
-    toggleButton();
-    toggleMobileMenu();
+  if (window.innerWidth >= 750) {
+    uncheckAll();
+    if (menuIsOpen) {
+      toggleButton();
+      toggleMobileMenu();
+    }
   }
 };

@@ -4,8 +4,6 @@
 
 @include setup;
 
-//TODO: test for REM change
-
 body {
   background-color: color(almost-white);
   font-family: $font-epilogue;
@@ -69,24 +67,21 @@ img {
 }
 
 .navigation__menu {
-  list-style-type: none;
   color: color(medium-gray);
   position: absolute;
-  list-style-type: none;
-  color: color(medium-gray);
   @include setFont(rem(16px), 26, 500);
   padding-top: 78px;
   padding-left: 24px;
   padding-right: 21px;
-  position: fixed;
   display: block;
   width: 240px;
   height: 100vh;
-  background-color: color(almost-white);
+  background-color: white;
   right: -240px;
   top: 0;
   transition: right 0.2s linear;
   @media (min-width: $breakpoint) {
+    background-color: color(almost-white);
     width: auto;
     height: auto;
     display: flex;
@@ -108,27 +103,57 @@ img {
 .menu__item {
   cursor: pointer;
   transition: all 0.1s ease-in;
+  list-style-type: none;
   margin-bottom: rem(16px);
   @media (min-width: $breakpoint) {
     margin-left: fluidClamp($breakpoint, 25px, $bp-desktop, 40px);
     margin-bottom: 0;
-    &:first-child {
-      margin-left: 0;
-    }
   }
   &:hover {
     color: color(almost-black);
   }
 }
 
-//TODO prevent line-break
-.menu__arrow {
+.item--features {
+  @media (min-width: $breakpoint) {
+    margin-left: 0;
+  }
+}
+
+.menu__arrow--up {
   margin-left: rem(16px);
   margin-bottom: 1px;
   stroke: currentColor;
   @media (min-width: $breakpoint) {
     margin-left: rem(8px);
   }
+}
+
+.menu__arrow--down {
+  display: none;
+  margin-left: rem(13px);
+  margin-bottom: 1px;
+  stroke: currentColor;
+  @media (min-width: $breakpoint) {
+    margin-left: rem(4.5px);
+  }
+}
+
+//checkbox hack for flipping the arrow
+.checkbox--features:checked ~ label .item--features .menu__arrow--up {
+  display: none;
+}
+
+.checkbox--features:checked ~ label .item--features .menu__arrow--down {
+  display: inline-block;
+}
+
+.checkbox--company:checked ~ label .item--company .menu__arrow--up {
+  display: none;
+}
+
+.checkbox--company:checked ~ label .item--company .menu__arrow--down {
+  display: inline-block;
 }
 
 .item--about {
@@ -156,6 +181,71 @@ img {
   &:hover {
     border-color: color(almost-black);
   }
+}
+
+//checkbox hack for submenus
+[type="checkbox"] {
+  display: none;
+}
+
+[type="checkbox"] ~ .menu__submenu {
+  display: none;
+}
+
+%menu__submenu {
+  display: block;
+  margin-top: 24px;
+  margin-left: 23px;
+  margin-bottom: 24px;
+  @media (min-width: $breakpoint) {
+    position: absolute;
+    margin: 0;
+    padding: 24px;
+    background: #ffffff;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.149126);
+    border-radius: 10px;
+  }
+}
+
+.checkbox--features:checked ~ .submenu--features {
+  @extend %menu__submenu;
+  @media (min-width: $breakpoint) {
+    top: 36px;
+    left: -74px;
+  }
+}
+
+.checkbox--company:checked ~ .submenu--company {
+  @extend %menu__submenu;
+  margin-top: 18px;
+  @media (min-width: $breakpoint) {
+    top: 36px;
+    left: 119px;
+    left: fluidClamp($breakpoint, 104px, $bp-desktop, 119px);
+    margin: 0;
+  }
+}
+
+.item--submenu {
+  @media (min-width: $breakpoint) {
+    margin-left: 0;
+    margin-bottom: 16px;
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
+.submenu-icons {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  align-items: center;
+  gap: 15px;
+}
+
+.submenu__icon {
+  height: 20px;
+  justify-self: center;
 }
 
 main {
