@@ -4,6 +4,10 @@
 
 @include setup;
 
+// TODO
+// - remove checkbox hack, use JS instead
+// - update readme.md
+
 body {
   background-color: color(almost-white);
   font-family: $font-epilogue;
@@ -22,10 +26,6 @@ img {
   }
 }
 
-.navigation__backdrop {
-  opacity: 0;
-}
-
 .navigation__toggle {
   display: block;
   z-index: 1;
@@ -36,19 +36,27 @@ img {
 }
 
 .toggle--open {
-  background-image: url(../images/icon-menu.svg);
-  width: 32px;
-  height: 18px;
+  background: {
+    image: url(../images/icon-menu.svg);
+    repeat: no-repeat;
+    size: cover;
+  }
+  width: rem(32px);
+  height: rem(18px);
   position: absolute;
   right: 16px;
   top: 25px;
 }
 
 .toggle--close {
-  background-image: url(../images/icon-close-menu.svg);
-  width: 24px;
-  height: 24px;
-  position: fixed;
+  background: {
+    image: url(../images/icon-close-menu.svg);
+    repeat: no-repeat;
+    size: cover;
+  }
+  width: rem(24px);
+  height: rem(24px);
+  position: absolute;
   top: 22px;
   right: 20px;
 }
@@ -74,16 +82,19 @@ img {
   padding-left: 24px;
   padding-right: 21px;
   display: block;
-  width: 240px;
-  height: 100vh;
+  min-height: 100vh;
+  width: min(rem(240px), 75%);
   background-color: white;
-  right: -240px;
+  right: 0;
   top: 0;
-  transition: right 0.2s linear;
+  transform: translateX(100%);
+  transition: transform 0.2s linear;
   @media (min-width: $breakpoint) {
+    transform: none;
     background-color: color(almost-white);
     width: auto;
     height: auto;
+    min-height: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -97,7 +108,7 @@ img {
 }
 
 .menu--open {
-  right: 0;
+  transform: translateX(0%);
 }
 
 .menu__item {
@@ -120,40 +131,25 @@ img {
   }
 }
 
-.menu__arrow--up {
+.menu__arrow--down {
   margin-left: rem(16px);
   margin-bottom: 1px;
   stroke: currentColor;
+  width: rem(8px);
   @media (min-width: $breakpoint) {
     margin-left: rem(8px);
   }
 }
 
-.menu__arrow--down {
+.menu__arrow--up {
   display: none;
   margin-left: rem(13px);
   margin-bottom: 1px;
   stroke: currentColor;
+  width: rem(8px);
   @media (min-width: $breakpoint) {
     margin-left: rem(4.5px);
   }
-}
-
-//checkbox hack for flipping the arrow
-.checkbox--features:checked ~ label .item--features .menu__arrow--up {
-  display: none;
-}
-
-.checkbox--features:checked ~ label .item--features .menu__arrow--down {
-  display: inline-block;
-}
-
-.checkbox--company:checked ~ label .item--company .menu__arrow--up {
-  display: none;
-}
-
-.checkbox--company:checked ~ label .item--company .menu__arrow--down {
-  display: inline-block;
 }
 
 .item--about {
@@ -183,15 +179,6 @@ img {
   }
 }
 
-//checkbox hack for submenus
-[type="checkbox"] {
-  display: none;
-}
-
-[type="checkbox"] ~ .menu__submenu {
-  display: none;
-}
-
 %menu__submenu {
   display: block;
   margin-top: 24px;
@@ -207,23 +194,29 @@ img {
   }
 }
 
-.checkbox--features:checked ~ .submenu--features {
+.submenu-features {
   @extend %menu__submenu;
+  display: none;
   @media (min-width: $breakpoint) {
     top: 36px;
     left: -74px;
   }
 }
 
-.checkbox--company:checked ~ .submenu--company {
+.submenu-company {
   @extend %menu__submenu;
   margin-top: 18px;
+  display: none;
   @media (min-width: $breakpoint) {
     top: 36px;
     left: 119px;
     left: fluidClamp($breakpoint, 104px, $bp-desktop, 119px);
     margin: 0;
   }
+}
+
+.submenu--open {
+  display: block;
 }
 
 .item--submenu {
@@ -250,7 +243,7 @@ img {
 
 main {
   background-color: color(almost-white);
-  //to hide footer behind content case of scrolling
+  //to hide footer behind content in case of scrolling
   display: flex;
   flex-direction: column;
   @media (min-width: $breakpoint) {

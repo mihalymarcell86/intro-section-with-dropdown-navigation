@@ -50,8 +50,7 @@ I used this project to experiment with the "checkbox-hack". I found that this te
 - Form controls' functionality is too restricted to solve more complex issues, _e.g._, radio buttons cannot be unselected, checkboxes cannot be configured so that only one of a group can be checked, etc.
 - The overcomplicated CSS selectors jumble up specificity and thus defeat one of the key benefits of using BEM.
 
-Ultimately I actualised the submenus with the above technique and used vanilla JavaScript to patch up the code.
-The side panel was made mostly using JavaScript.
+The menu behavior was ultimately configured in vanilla JS.
 
 ---
 
@@ -60,6 +59,10 @@ I was debating with myself whether the navbar interaction should be hover or cli
 ---
 
 I realized, how the `min()` / `max()` / `clamp()` functions can be used to reduce the amount of media queries in CSS, I used them composed with my `lerp()` function to effect liquid layout.
+
+---
+
+I learned that the `<svg>` element can't take the `hidden` attribute. An alternative could be setting `visibility="invisible"` on the `path` attribute instead, or using `display: none`.
 
 ### Useful resources
 
