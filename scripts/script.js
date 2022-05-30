@@ -28,7 +28,7 @@ let subMenuOpen = null;
 
 function openSubmenu(menu) {
   subMenuOpen = menu;
-  menu.querySelector("ul").classList.toggle("submenu--open");
+  menu.querySelector("ul").classList.add("submenu--open");
   menu.querySelector(".menu__arrow--down").style.display = "none";
   menu.querySelector(".menu__arrow--up").style.display = "inline-block";
 }
@@ -44,7 +44,10 @@ function closeSubmenu(menu) {
   menu.addEventListener("click", () => {
     if (subMenuOpen && subMenuOpen !== menu) {
       closeSubmenu(subMenuOpen);
-      openSubmenu(menu);
+      window.innerWidth >= 750
+        ? openSubmenu(menu)
+        : //account for transition
+          setTimeout(() => openSubmenu(menu), 200);
     } else if (subMenuOpen === menu) {
       closeSubmenu(menu);
     } else {

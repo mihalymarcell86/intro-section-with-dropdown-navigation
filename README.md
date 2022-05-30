@@ -64,10 +64,15 @@ I realized, how the `min()` / `max()` / `clamp()` functions can be used to reduc
 
 I learned that the `<svg>` element can't take the `hidden` attribute. An alternative could be setting `visibility="invisible"` on the `path` attribute instead, or using `display: none`.
 
+---
+
+Transitions will not work on indefinite dimensions, like `auto`, `min-content`. I researched some workarounds, which see below.
+
 ### Useful resources
 
 - [Navigation drop-downs. Should they be hover or click?](https://www.liquidlight.co.uk/blog/navigation-drop-downs-should-they-be-hover-or-click/) - Usability issues of hover dropdowns
 - [Hover vs. Click Navigation](https://medium.com/ashleycrutcher/hover-vs-click-navigation-a260a8d51d81) - Polls on UI preferences and their conclusions.
+- [Using CSS transitions on auto dimensions](https://css-tricks.com/using-css-transitions-auto-dimensions/)
 
 ## Author
 

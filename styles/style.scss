@@ -179,9 +179,7 @@ img {
 
 %menu__submenu {
   display: block;
-  margin-top: 24px;
   margin-left: 23px;
-  margin-bottom: 24px;
   @media (min-width: $breakpoint) {
     position: absolute;
     margin: 0;
@@ -194,19 +192,26 @@ img {
 
 .submenu-features {
   @extend %menu__submenu;
-  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.2s ease-out;
   @media (min-width: $breakpoint) {
-    top: 36px;
+    display: none;
+    max-height: none;
+    top: 25px;
     left: -74px;
   }
 }
 
 .submenu-company {
   @extend %menu__submenu;
-  margin-top: 18px;
-  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.2s ease-out;
   @media (min-width: $breakpoint) {
-    top: 36px;
+    display: none;
+    max-height: none;
+    top: 25px;
     left: 119px;
     left: fluidClamp($breakpoint, 104px, $bp-desktop, 119px);
     margin: 0;
@@ -214,7 +219,11 @@ img {
 }
 
 .submenu--open {
-  display: block;
+  max-height: 500px;
+  margin-block: 24px;
+  @media (min-width: $breakpoint) {
+    display: block;
+  }
 }
 
 .item--submenu {
