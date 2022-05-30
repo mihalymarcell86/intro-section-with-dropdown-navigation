@@ -4,10 +4,6 @@
 
 @include setup;
 
-// TODO
-// - remove checkbox hack, use JS instead
-// - update readme.md
-
 body {
   background-color: color(almost-white);
   font-family: $font-epilogue;
@@ -113,7 +109,6 @@ img {
 
 .menu__item {
   cursor: pointer;
-  transition: all 0.1s ease-in;
   list-style-type: none;
   margin-bottom: rem(16px);
   @media (min-width: $breakpoint) {
@@ -122,6 +117,9 @@ img {
   }
   &:hover {
     color: color(almost-black);
+  }
+  &:hover ul {
+    color: color(medium-gray);
   }
 }
 

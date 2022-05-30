@@ -28,13 +28,13 @@ let subMenuOpen = null;
 
 function openSubmenu(menu) {
   subMenuOpen = menu;
-  menu.nextElementSibling.classList.toggle("submenu--open");
+  menu.querySelector("ul").classList.toggle("submenu--open");
   menu.querySelector(".menu__arrow--down").style.display = "none";
   menu.querySelector(".menu__arrow--up").style.display = "inline-block";
 }
 
 function closeSubmenu(menu) {
-  menu.nextElementSibling.classList.remove("submenu--open");
+  menu.querySelector("ul").classList.remove("submenu--open");
   menu.querySelector(".menu__arrow--down").style.display = "inline-block";
   menu.querySelector(".menu__arrow--up").style.display = "none";
   subMenuOpen = null;
